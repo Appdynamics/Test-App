@@ -1,0 +1,4 @@
+java-services/docker/java-services.jar
+java-services/target/*
+notes.txt
+.DS_Store

@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+
+  app-load:
+    container_name: app-load
+    hostname: app-load
+    restart: always
+    image: jdbarfield/app-load:1.0
+
+  WebFrontEnd:
+    container_name: web-front-end
+    hostname: web-front-end
+    restart: always
+    image: jdbarfield/java-services:1.0
+    expose:
+      - 8080
+
+  AuthServices:
+    container_name: auth-services
+    hostname: auth-services
+    restart: always
+    image: jdbarfield/java-services:1.0
+    expose:
+      - 8080
+
+  WebAPI:
+    container_name: web-api
+    hostname: web-api
+    restart: always
+    image: jdbarfield/java-services:1.0
+    expose:
+      - 8080
+
+  WorldPortal:
+    container_name: world-portal
+    hostname: world-portal
+    restart: always
+    image: jdbarfield/java-services:1.0
+    expose:
+      - 8080
+
+  BillingServices:
+    container_name: billing-services
+    hostname: billing-services
+    restart: always
+    image: jdbarfield/java-services:1.0
+    expose:
+      - 8080
