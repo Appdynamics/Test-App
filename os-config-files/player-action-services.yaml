@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: player-action-services
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: player-action-services
+    spec:
+      containers:
+        - name: player-action-services
+          image: java-services
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: player-action-services
+spec:
+  selector:
+    name: player-action-services
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+status:
+  loadBalancer: {}

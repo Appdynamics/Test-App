@@ -1,0 +1,102 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata: 
+  name: sim-os-agent
+spec: 
+  template: 
+    metadata: 
+      labels: 
+        name: sim-os-agent
+    spec:
+      initContainers:
+      - name: agent-repo
+        image: agent-repo:4.5.1.0
+        imagePullPolicy: Never
+        command: ["cp", "-r", "/sharedFiles/MachineAgent", "/mountPath/MachineAgent"]
+        volumeMounts:
+        - mountPath: /mountPath
+          name: shared-files
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+      serviceAccountName: appd-sim-agent
+      containers:
+      - env:
+        - name: ACCOUNT_ACCESS_KEY
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: ACCOUNT_ACCESS_KEY
+        - name: ACCOUNT_NAME
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: ACCOUNT_NAME
+        - name: APPLICATION_NAME
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: APPLICATION_NAME
+        - name: CONTROLLER_HOST
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: CONTROLLER_HOST
+        - name: CONTROLLER_PORT
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: CONTROLLER_PORT
+        - name: CONTROLLER_SSL_ENABLED
+          valueFrom:
+              configMapKeyRef:
+                name: controller-config
+                key: CONTROLLER_SSL_ENABLED
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: METRIC_LIMIT
+          value: "2000"
+        image: machine-agent
+        imagePullPolicy: Never
+        securityContext:
+          privileged: true
+        name: sim-os-agent
+        resources: {}
+        volumeMounts:
+        - mountPath: /hostroot
+          name: hostroot
+          readOnly: true
+        - mountPath: /var/run/docker.sock
+          name: docker-sock
+        - mountPath: /sharedFiles
+          name: shared-files
+      restartPolicy: Always
+      volumes:
+      - name: hostroot
+        hostPath:
+          path: /
+          type: Directory
+      - name: docker-sock
+        hostPath:
+          path: /var/run/docker.sock
+          type: Socket
+      - name: shared-files
+        path: /sharedFiles
+        emptyDir: {}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: machine-agent
+spec:
+  selector:
+    name: sim-os-agent
+  ports:
+  - name: "9090"
+    port: 9090
+    targetPort: 9090
+status:
+  loadBalancer: {}

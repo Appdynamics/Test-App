@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: client-api
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: client-api
+    spec:
+      containers:
+        - name: client-api
+          image: java-services
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-api
+spec:
+  selector:
+    name: client-api
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+status:
+  loadBalancer: {}

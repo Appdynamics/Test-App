@@ -18,21 +18,25 @@ public class WorldPortalController extends BaseController {
 
 	@RequestMapping("/purchaseGamePass")
 	public String purchaseGamePass(HttpServletRequest request) {
+		makeWebRequest("world-generator", "8080", "WorldGenerator/purchaseGamePass", request);
 		return "Hello from purchaseGamePass";
 	}
 
 	@RequestMapping("/joinGame")
 	public String joinGame(HttpServletRequest request) {
+		makeWebRequest("world-generator", "8080", "WorldGenerator/joinGame", request);
 		return "Hello from joinGame";
 	}
 
 	@RequestMapping("/updateAction")
 	public String updateAction(HttpServletRequest request) {
+		makeWebRequest("world-generator", "8080", "WorldGenerator/updateAction", request);
 		return "Hello from updateAction";
 	}
 
 	@RequestMapping("/getWorld")
 	public String getWorld(HttpServletRequest request) {
+		makeWebRequest("world-generator", "8080", "WorldGenerator/getWorld", request);
 		return "Hello from getWorld";
 	}
 }

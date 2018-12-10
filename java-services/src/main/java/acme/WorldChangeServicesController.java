@@ -28,11 +28,13 @@ public class WorldChangeServicesController extends BaseController {
 
 	@RequestMapping("/updateAction")
 	public String updateAction(HttpServletRequest request) {
+		makeWebRequest("world-portal", "8080", "WorldPortal/updateAction", request);
 		return "Hello from updateAction";
 	}
 
 	@RequestMapping("/getWorld")
 	public String getWorld(HttpServletRequest request) {
+		makeWebRequest("world-portal", "8080", "WorldPortal/getWorld", request);
 		return "Hello from getWorld";
 	}
 

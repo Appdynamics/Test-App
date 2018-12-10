@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-front-end
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: web-front-end
+    spec:
+      containers:
+        - name: web-front-end
+          image: java-services
+          imagePullPolicy: Never
+          ports:
+          - containerPort: 8080
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-front-end
+spec:
+  selector:
+    name: web-front-end
+  ports:
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
+status:
+  loadBalancer: {}
