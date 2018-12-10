@@ -8,41 +8,9 @@ services:
     restart: always
     image: app-load
 
-  mock-services:  
-    container_name: mock-services
-    hostname: mock-services
-    restart: always
-    image: mock-services
-    expose:
-      - 8080
-
-  web-front-end:
-    container_name: web-front-end
-    hostname: web-front-end
-    restart: always
-    image: java-services
-    expose:
-      - 8080
-
   world-generator:
     container_name: world-generator
     hostname: world-generator
-    restart: always
-    image: java-services
-    expose:
-      - 8080
-
-  web-api:
-    container_name: web-api
-    hostname: web-api
-    restart: always
-    image: java-services
-    expose:
-      - 8080
-
-  auth-services:
-    container_name: auth-services
-    hostname: auth-services
     restart: always
     image: java-services
     expose:
@@ -102,12 +70,4 @@ services:
     restart: always
     image: java-services
     expose:
-      - 8080
-
-  billing-services:
-    container_name: billing-services
-    hostname: billing-services
-    restart: always
-    image: java-services
-    expose:
-      - 8080   
+      - 8080 
