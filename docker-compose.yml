@@ -1,49 +1,66 @@
-version: '2'
+version: '3.5'
 
 services:
 
-  app-load:
-    container_name: app-load
-    hostname: app-load
+  load:
+    container_name: load
+    hostname: load
     restart: always
-    image: jdbarfield/app-load:1.0
+    image: load
 
-  WebFrontEnd:
-    container_name: web-front-end
-    hostname: web-front-end
+  mock-services:  
+    container_name: mock-services
+    hostname: mock-services
     restart: always
-    image: jdbarfield/java-services:1.0
+    image: mock-services
     expose:
       - 8080
 
-  AuthServices:
-    container_name: auth-services
-    hostname: auth-services
+  chat-services:
+    container_name: chat-services
+    hostname: chat-services
     restart: always
-    image: jdbarfield/java-services:1.0
+    image: nodejs-services
+    expose:
+      - 8001
+
+  player-action-services:
+    container_name: player-action-services
+    hostname: player-action-services
+    restart: always
+    image: java-services
     expose:
       - 8080
 
-  WebAPI:
-    container_name: web-api
-    hostname: web-api
+  ai-services:
+    container_name: ai-services
+    hostname: ai-services
     restart: always
-    image: jdbarfield/java-services:1.0
+    image: java-services
     expose:
       - 8080
 
-  WorldPortal:
-    container_name: world-portal
-    hostname: world-portal
+  action-response-services:
+    container_name: action-response-services
+    hostname: action-response-services
     restart: always
-    image: jdbarfield/java-services:1.0
+    image: nodejs-services
+    expose:
+      - 8001
+
+  client-api:
+    container_name: client-api
+    hostname: client-api
+    restart: always
+    image: java-services
     expose:
       - 8080
 
-  BillingServices:
-    container_name: billing-services
-    hostname: billing-services
+  world-change-services:
+    container_name: world-change-services
+    hostname: world-change-services
     restart: always
-    image: jdbarfield/java-services:1.0
+    image: java-services
     expose:
       - 8080
+      

@@ -5,34 +5,30 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/WorldPortal")
-public class WorldPortalController extends BaseController {
+@RequestMapping("/GameCaching")
+public class GameCachingController extends BaseController {
 
     @RequestMapping(value = {"","/"})
     public String home() {
-        return "Hello from WorldPortal:home()";
+        return "Hello from GameCaching:home()";
     }
 
-	@RequestMapping("/purchaseGamePass")
-	public String purchaseGamePass(HttpServletRequest request) {
-		return "Hello from purchaseGamePass";
-	}
-
 	@RequestMapping("/joinGame")
-	public String joinGame(HttpServletRequest request) {
+	public String joinGame() {
 		return "Hello from joinGame";
 	}
 
 	@RequestMapping("/updateAction")
-	public String updateAction(HttpServletRequest request) {
+	public String updateAction() {
 		return "Hello from updateAction";
 	}
 
 	@RequestMapping("/getWorld")
-	public String getWorld(HttpServletRequest request) {
+	public String getWorld() {
 		return "Hello from getWorld";
 	}
+
+
 }

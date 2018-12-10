@@ -82,4 +82,40 @@ do
     fi
     sleep .$(( RANDOM % 1000 ))
 
+    if [[ $problemBT -eq 4 ]]; then
+
+        if [[ $problemSegment -eq 0 ]]; then
+            problemSegment=$((RANDOM%4+1))
+        fi
+
+        nohup curl -H"problemSegment: $problemSegment" http://client-api:8080/ClientAPI/updateAction
+    else
+        nohup curl http://client-api:8080/ClientAPI/updateAction
+    fi
+    sleep .$(( RANDOM % 1000 ))
+
+    if [[ $problemBT -eq 5 ]]; then
+
+        if [[ $problemSegment -eq 0 ]]; then
+            problemSegment=$((RANDOM%3+1))
+        fi
+
+        nohup curl -H"problemSegment: $problemSegment" http://client-api:8080/ClientAPI/chat
+    else
+        nohup curl http://client-api:8080/ClientAPI/chat
+    fi
+    sleep .$(( RANDOM % 1000 ))
+
+    if [[ $problemBT -eq 6 ]]; then
+
+        if [[ $problemSegment -eq 0 ]]; then
+            problemSegment=$((RANDOM%4+1))
+        fi
+
+        nohup curl -H"problemSegment: $problemSegment" http://client-api:8080/ClientAPI/getWorld
+    else
+        nohup curl http://client-api:8080/ClientAPI/getWorld
+    fi
+    sleep .$(( RANDOM % 1000 ))v
+
 done

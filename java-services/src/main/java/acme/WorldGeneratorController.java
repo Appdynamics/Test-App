@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-@RequestMapping("/WorldPortal")
-public class WorldPortalController extends BaseController {
+@RequestMapping("/WorldGenerator")
+public class WorldGeneratorController extends BaseController {
 
     @RequestMapping(value = {"","/"})
     public String home() {
-        return "Hello from WorldPortal:home()";
+        return "Hello from WorldGenerator:home()";
     }
 
 	@RequestMapping("/purchaseGamePass")
-	public String purchaseGamePass(HttpServletRequest request) {
+	public String purchaseGamePass() {
 		return "Hello from purchaseGamePass";
 	}
 
@@ -35,4 +35,6 @@ public class WorldPortalController extends BaseController {
 	public String getWorld(HttpServletRequest request) {
 		return "Hello from getWorld";
 	}
+
+
 }
