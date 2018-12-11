@@ -12,10 +12,10 @@ spec:
     spec:
       containers:
         - name: chat-services
-          image: java-services
+          image: nodejs-services
           imagePullPolicy: Never
           ports:
-          - containerPort: 8080
+          - containerPort: 8001
       restartPolicy: Always
 
 ---
@@ -27,8 +27,8 @@ spec:
   selector:
     name: chat-services
   ports:
-  - name: "8080"
-    port: 8080
-    targetPort: 8080
+  - name: "8001"
+    port: 8001
+    targetPort: 8001
 status:
   loadBalancer: {}
