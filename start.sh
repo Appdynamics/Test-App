@@ -1,4 +1,4 @@
 #!/bin/sh
 
-docker-compose -f /home/ravello/dynamicAttach/Test-App/docker-compose.yml up -d
+docker-compose up -d
 
