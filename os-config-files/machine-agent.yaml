@@ -8,58 +8,32 @@ spec:
       labels: 
         name: sim-os-agent
     spec:
-      initContainers:
-      - name: agent-repo
-        image: agent-repo:4.5.1.0
-        imagePullPolicy: Never
-        command: ["cp", "-r", "/sharedFiles/MachineAgent", "/mountPath/MachineAgent"]
-        volumeMounts:
-        - mountPath: /mountPath
-          name: shared-files
-      volumes:
-        - name: shared-files
-          emptyDir: {}
       serviceAccountName: appd-sim-agent
       containers:
       - env:
         - name: ACCOUNT_ACCESS_KEY
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: ACCOUNT_ACCESS_KEY
+          value: 8083d850-0dbb-42b6-8d58-4047a54e5ffc
         - name: ACCOUNT_NAME
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: ACCOUNT_NAME
+          value: customer1
         - name: APPLICATION_NAME
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: APPLICATION_NAME
+          value: OS-App1
         - name: CONTROLLER_HOST
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: CONTROLLER_HOST
+          value: 454controllernossh-damademo-bio0c4pc.srv.ravcloud.com
         - name: CONTROLLER_PORT
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: CONTROLLER_PORT
+          value: 8090
         - name: CONTROLLER_SSL_ENABLED
-          valueFrom:
-              configMapKeyRef:
-                name: controller-config
-                key: CONTROLLER_SSL_ENABLED
+          value: false
+        - name: EVENT_ENDPOINT
+          value: 454controllernossh-damademo-bio0c4pc.srv.ravcloud.com:9080
+        - name: FULL_ACCOUNT_NAME
+          value: customer1_58eada16-c7f2-40ba-a2ce-61bcadf11a0f
         - name: HOSTNAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
         - name: METRIC_LIMIT
           value: "2000"
-        image: machine-agent
-        imagePullPolicy: Never
+        image: jdbarfield/dynamic-attach-ma
         securityContext:
           privileged: true
         name: sim-os-agent
@@ -70,8 +44,6 @@ spec:
           readOnly: true
         - mountPath: /var/run/docker.sock
           name: docker-sock
-        - mountPath: /sharedFiles
-          name: shared-files
       restartPolicy: Always
       volumes:
       - name: hostroot
