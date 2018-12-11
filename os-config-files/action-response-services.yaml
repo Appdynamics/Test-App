@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: action-response-services
+        tier-name: action-response-services-tier
     spec:
       containers:
         - name: action-response-services

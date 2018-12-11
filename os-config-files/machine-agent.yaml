@@ -20,20 +20,26 @@ spec:
         - name: CONTROLLER_HOST
           value: 454controllernossh-damademo-bio0c4pc.srv.ravcloud.com
         - name: CONTROLLER_PORT
-          value: 8090
+          value: "8090"
         - name: CONTROLLER_SSL_ENABLED
-          value: false
+          value: "false"
         - name: EVENT_ENDPOINT
           value: 454controllernossh-damademo-bio0c4pc.srv.ravcloud.com:9080
         - name: FULL_ACCOUNT_NAME
           value: customer1_58eada16-c7f2-40ba-a2ce-61bcadf11a0f
+        - name: IS_K8_DEPLOYMENT
+          value: "true"
+        - name: TIER_NAME_FROM
+          value: CONTAINER_LABEL
+        - name: TIER_NAME_FROM_VALUE
+          value: tier-name
         - name: HOSTNAME
           valueFrom:
             fieldRef:
               fieldPath: spec.nodeName
         - name: METRIC_LIMIT
           value: "2000"
-        image: jdbarfield/dynamic-attach-ma
+        image: jdbarfield/dynamic-attach-ma:k8-1.1
         securityContext:
           privileged: true
         name: sim-os-agent

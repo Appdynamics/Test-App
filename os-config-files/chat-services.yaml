@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: chat-services
+        tier-name: chat-services-tier
     spec:
       containers:
         - name: chat-services

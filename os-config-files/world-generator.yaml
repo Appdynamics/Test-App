@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: world-generator
+        tier-name: world-generator-tier
     spec:
       containers:
         - name: world-generator

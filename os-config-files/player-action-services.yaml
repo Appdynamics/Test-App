@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: player-action-services
+        tier-name: player-action-services-tier
     spec:
       containers:
         - name: player-action-services

@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: ai-services
+        tier-name: ai-services-tier
     spec:
       containers:
         - name: ai-services

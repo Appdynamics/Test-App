@@ -1,16 +1,16 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: demo-load
+  name: app-load
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        name: demo-load
+        name: app-load
     spec:
       containers:
-        - name: demo-load
-          image: demo-load
+        - name: app-load
+          image: app-load
           imagePullPolicy: Never
       restartPolicy: Always

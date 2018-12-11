@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: client-api
+        tier-name: client-api-tier
     spec:
       containers:
         - name: client-api

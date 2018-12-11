@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: world-change-services
+        tier-name: world-change-services-tier
     spec:
       containers:
         - name: world-change-services

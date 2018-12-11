@@ -8,6 +8,7 @@ spec:
     metadata:
       labels:
         name: world-portal
+        tier-name: world-portal-tier
     spec:
       containers:
         - name: world-portal
