@@ -8,4 +8,4 @@ oc delete -f web-api.yaml
 oc delete -f web-front-end.yaml
 oc delete -f world-change-services.yaml
 
-# oc delete -f machine-agent.yaml
+oc delete -f machine-agent.yaml
