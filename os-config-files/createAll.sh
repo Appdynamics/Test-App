@@ -8,4 +8,4 @@ oc create -f world-change-services.yaml
 oc create -f world-generator.yaml
 oc create -f world-portal.yaml
 
-oc create -f machine-agent.yaml
+# oc create -f machine-agent.yaml

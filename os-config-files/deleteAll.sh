@@ -8,4 +8,4 @@ oc delete -f world-change-services.yaml
 oc delete -f world-generator.yaml
 oc delete -f world-portal.yaml
 
-oc delete -f machine-agent.yaml
+# oc delete -f machine-agent.yaml
