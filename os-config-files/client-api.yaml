@@ -9,6 +9,7 @@ spec:
       labels:
         name: client-api
         tier-name: client-api-tier
+        application-name: OS-App
     spec:
       containers:
         - name: client-api

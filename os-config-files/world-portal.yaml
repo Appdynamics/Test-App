@@ -9,6 +9,7 @@ spec:
       labels:
         name: world-portal
         tier-name: world-portal-tier
+        application-name: OS-App
     spec:
       containers:
         - name: world-portal

@@ -9,6 +9,7 @@ spec:
       labels:
         name: player-action-services
         tier-name: player-action-services-tier
+        application-name: OS-App
     spec:
       containers:
         - name: player-action-services

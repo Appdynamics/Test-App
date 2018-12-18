@@ -9,6 +9,8 @@ spec:
       labels:
         name: ai-services
         tier-name: ai-services-tier
+        application-name: OS-App
+
     spec:
       containers:
         - name: ai-services

@@ -9,6 +9,7 @@ spec:
       labels:
         name: chat-services
         tier-name: chat-services-tier
+        application-name: OS-App
     spec:
       containers:
         - name: chat-services

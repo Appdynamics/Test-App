@@ -9,6 +9,7 @@ spec:
       labels:
         name: action-response-services
         tier-name: action-response-services-tier
+        application-name: OS-App
     spec:
       containers:
         - name: action-response-services

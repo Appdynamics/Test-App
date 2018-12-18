@@ -9,6 +9,7 @@ spec:
       labels:
         name: world-change-services
         tier-name: world-change-services-tier
+        application-name: OS-App
     spec:
       containers:
         - name: world-change-services

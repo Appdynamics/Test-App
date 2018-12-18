@@ -9,6 +9,7 @@ spec:
       labels:
         name: world-generator
         tier-name: world-generator-tier
+        application-name: OS-App
     spec:
       containers:
         - name: world-generator
