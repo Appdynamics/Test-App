@@ -1,4 +1,4 @@
-FROM node:6.14.2-slim
+FROM node:10-slim
 
 RUN apt-get -y update && \
     apt-get -y install vim && apt-get clean all && \
